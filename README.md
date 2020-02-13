@@ -1,11 +1,15 @@
 # 2illow Graph CRUD API
 ## Create
 **Endpoint: /api/graphs/:id (POST)**
+Accepts JSON data with property information and adds it to the DB
+
 
 ## Read
 **Endpoint: /api/graphs/:id (GET)**
+Returns graph data for the property ID.
 
 **Legacy endpoint: /seed (GET)**
+Originally adds an entry to the DB and sends that entry back as response.
 sample data:
 ```
 [ { graphData: 
@@ -31,7 +35,10 @@ sample data:
 ```
 ## Update
 **Endpoint: /api/graphs/:id (PATCH)**
+Accepts JSON with key value pair of the desired change for the specific property ID. 
+
 
 ## Delete
-**Endpoint: /api/graphs/**
+**Endpoint: /api/graphs/:id**
+delete the property data for a property ID.
 
