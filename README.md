@@ -2,11 +2,37 @@
 ## Create
 **Endpoint: /api/graphs/:id (POST)**
 Accepts JSON data with property information and adds it to the DB
-
+example: see read from below for description of properties
 
 ## Read
 **Endpoint: /api/graphs/:id (GET)**
-Returns graph data for the property ID.
+Returns graph data for the property ID and associated neighborhood/city.
+Each data point in estimates represents a month.
+cestimates is city estimates; nestimates is neighborhood estimates
+response example: 
+```
+{
+  city: {
+    name: 'cityname',
+    id: 1,
+    estimates: [{date: 1/1/1111, estimate: 300000}, {...}]
+  },
+  neighborhood: {
+    name: 'neighborhoodname',
+    id: 1,
+    estimates: [{date: 1/1/1111, estimate: 300000}, {...}] 
+  },
+  property: {
+    name: 'propertyname',
+    id: 1,
+    estimates: [{date: 1/1/1111, estimate: 300000}, {...}]
+    listedprice: 300000,
+    listeddate: 1/1/1111
+    soldprice: 300000,
+    solddate: 1/1/1111
+  }
+}
+```
 
 **Legacy endpoint: /seed (GET)**
 Originally adds an entry to the DB and sends that entry back as response.
