@@ -1,8 +1,9 @@
-const express = require('express')
-const axios = require('axios')
+require('newrelic');
+const express = require('express');
+const axios = require('axios');
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 
 
@@ -19,6 +20,17 @@ app.get('/seed', (req, res) => {
     .catch(err => {
       console.log(err)
     })
+});
+
+app.get('/api/graphs/properties/:id', (req, res) => {
+  axios.get('http://localhost:3003' + req.url)
+    .then((response) => {
+      res.send(response.data)
+    })
+    .catch((err) => {
+      res.writeHead(500);
+      res.end();;
+    });
 });
 
 app.get('/houses', (req, res) => {
